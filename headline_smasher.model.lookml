@@ -12,10 +12,10 @@
     - join: users
       foreign_key: user_id
 
-
 - base_view: headlines
-
-- base_view: schema_migrations
+  joins:
+    - join: users
+      foreign_key: creator_id
 
 - base_view: source_headline_fragments
   joins:
@@ -24,7 +24,6 @@
 
     - join: headlines
       foreign_key: headline_id
-
 
 - base_view: source_headlines
 

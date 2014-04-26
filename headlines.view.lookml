@@ -6,26 +6,36 @@
     type: int
     sql: ${TABLE}.id
 
-  - dimension: bot_share_tweet_id
-    sql: ${TABLE}.bot_share_tweet_id
+ 
+  - dimension: creator_id
+    hidden: true
+    type: int
+    sql: ${TABLE}.creator_id
 
-  - dimension_group: bot_shared
+
+  - dimension: bot_tweet_url
+    sql: ${TABLE}.bot_share_tweet_id
+    html: |
+      <a href="https://twitter.com/HeadlineSmasher/status/{{ value }}">View Tweet</a>
+      
+  - dimension: bot_tweeted
+    type: yesno
+    sql: ${TABLE}.bot_share_tweet_id is not null
+
+  - dimension: permalink_url
+    sql: ${TABLE}.id
+    html: |
+      <a href="http://headlinesmasher.com/headlines/{{ value }}">View on Headline Smasher</a>
+
+  - dimension_group: bot_tweeted
     type: time
     timeframes: [time, date, week, month]
     sql: ${TABLE}.bot_shared_at
-
-  - dimension: comments_count
-    type: int
-    sql: ${TABLE}.comments_count
 
   - dimension_group: created
     type: time
     timeframes: [time, date, week, month]
     sql: ${TABLE}.created_at
-
-  - dimension: creator_id
-    type: int
-    sql: ${TABLE}.creator_id
 
   - dimension: depth
     type: int
@@ -37,24 +47,34 @@
   - dimension: name_hash
     sql: ${TABLE}.name_hash
 
-  - dimension: photo_data
-    sql: ${TABLE}.photo_data
+#   - dimension: photo_data
+#     sql: ${TABLE}.photo_data
 
-  - dimension: source_names
-    sql: ${TABLE}.source_names
+#   - dimension: source_names
+#     sql: ${TABLE}.source_names
 
   - dimension_group: updated
     type: time
     timeframes: [time, date, week, month]
     sql: ${TABLE}.updated_at
 
-  - dimension: vote_count
-    type: int
-    sql: ${TABLE}.vote_count
+#   - dimension: vote_count
+#     type: int
+#     sql: ${TABLE}.vote_count
 
   - measure: count
     type: count
     detail: detail*
+    
+  - measure: average_vote_count
+    type: average
+    detail: detail*
+    sql: ${TABLE}.vote_count
+
+  - measure: total_vote_count
+    type: sum
+    detail: detail*
+    sql: ${TABLE}.vote_count
 
 
   # ----- Detail ------

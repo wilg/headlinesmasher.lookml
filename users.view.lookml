@@ -6,9 +6,11 @@
     type: int
     sql: ${TABLE}.id
 
-  - dimension: api_key
-    sql: ${TABLE}.api_key
-
+  - dimension: sign_in_count_tier
+    type: tier
+    tiers: [0,1,2,5,10]
+    sql: ${sign_in_count}
+  
   - dimension: api_requests
     type: int
     sql: ${TABLE}.api_requests
@@ -30,9 +32,6 @@
   - dimension: current_sign_in_ip
     sql: ${TABLE}.current_sign_in_ip
 
-  - dimension: encrypted_password
-    sql: ${TABLE}.encrypted_password
-
   - dimension: karma
     type: int
     sql: ${TABLE}.karma
@@ -48,10 +47,10 @@
   - dimension: login
     sql: ${TABLE}.login
 
-  - dimension_group: remember_created
-    type: time
-    timeframes: [time, date, week, month]
-    sql: ${TABLE}.remember_created_at
+#   - dimension_group: remember_created
+#     type: time
+#     timeframes: [time, date, week, month]
+#     sql: ${TABLE}.remember_created_at
 
   - dimension: saved_headlines_count
     type: int
