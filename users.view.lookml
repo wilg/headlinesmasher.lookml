@@ -73,6 +73,14 @@
     type: count
     detail: detail*
 
+  - measure: total_karma
+    type: sum
+    sql: ${TABLE}.karma
+
+  - measure: average_karma
+    type: average
+    sql: ${TABLE}.karma
+
 
   # ----- Detail ------
   sets:
