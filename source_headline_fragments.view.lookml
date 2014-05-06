@@ -1,10 +1,10 @@
 - view: source_headline_fragments
   fields:
 
-  - dimension: id
-    primary_key: true
-    type: int
-    sql: ${TABLE}.id
+  # - dimension: id
+  #  primary_key: true
+  #  type: int
+  #  sql: ${TABLE}.id
 
   - dimension_group: created
     type: time
