@@ -1,20 +1,20 @@
 - view: source_headline_fragments
   fields:
 
-#   - dimension: id
-#     primary_key: true
-#     type: int
-#     sql: ${TABLE}.id
+  - dimension: id
+    primary_key: true
+    type: int
+    sql: ${TABLE}.id
 
   - dimension_group: created
     type: time
     timeframes: [time, date, week, month]
     sql: ${TABLE}.created_at
-# 
-#   - dimension: headline_id
-#     type: int
-#     hidden: true
-#     sql: ${TABLE}.headline_id
+
+  - dimension: headline_id
+    type: int
+    hidden: true
+    sql: ${TABLE}.headline_id
 
   - dimension: index
     type: int

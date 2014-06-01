@@ -14,10 +14,21 @@
   - dimension: name
     sql: ${TABLE}.name
 
+  - dimension: hash
+    sql: ${TABLE}.name_hash
+
+  - dimension: fetcher
+    sql: ${TABLE}.fetcher
+
   - dimension: source_id
     sql: ${TABLE}.source_id
 
-  - dimension_group: updated
+#   - dimension_group: updated
+#     type: time
+#     timeframes: [time, date, week, month]
+#     sql: ${TABLE}.updated_at
+    
+  - dimension_group: fetched
     type: time
     timeframes: [time, date, week, month]
     sql: ${TABLE}.updated_at
@@ -37,4 +48,3 @@
       - id
         # Counters for views that join 'source_headlines'
       - source_headline_fragments.count
-
