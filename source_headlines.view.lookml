@@ -8,7 +8,7 @@
 
   - dimension_group: created
     type: time
-    timeframes: [time, date, week, month]
+    timeframes: [time, date, week, month, hour]
     sql: ${TABLE}.created_at
 
   - dimension: name
@@ -23,19 +23,35 @@
   - dimension: source_id
     sql: ${TABLE}.source_id
 
+  - dimension: author
+    sql: ${TABLE}.author
+
+  - dimension: section
+    sql: ${TABLE}.section
+
 #   - dimension_group: updated
 #     type: time
 #     timeframes: [time, date, week, month]
 #     sql: ${TABLE}.updated_at
     
-  - dimension_group: fetched
+  - dimension_group: published
     type: time
     timeframes: [time, date, week, month]
-    sql: ${TABLE}.updated_at
+    sql: ${TABLE}.published_at
 
   - dimension: url
     sql: ${TABLE}.url
 
+  - dimension: permalink
+    sql: ${TABLE}.id
+    html: |
+      <a href="http://headlinesmasher.com/source_headlines/<%= value %>">View</a>
+      
+  - dimension: article_link
+    sql: ${TABLE}.url
+    html: |
+      <% if value %><a href="<%= value %>">Read</a><% else %>&empty;<% end %>
+      
   - measure: count
     type: count
     detail: detail*
