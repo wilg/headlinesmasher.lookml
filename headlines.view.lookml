@@ -5,13 +5,11 @@
     primary_key: true
     type: int
     sql: ${TABLE}.id
-
  
   - dimension: creator_id
     hidden: true
     type: int
     sql: ${TABLE}.creator_id
-
 
   - dimension: bot_tweet_url
     sql: ${TABLE}.bot_share_tweet_id
@@ -41,11 +39,19 @@
     type: int
     sql: ${TABLE}.depth
 
-  - dimension: name
+  - dimension: headline
     sql: ${TABLE}.name
 
   - dimension: name_hash
     sql: ${TABLE}.name_hash
+    
+  - dimension: word_count
+    type: number
+    sql: array_length(string_to_array(${headline}, ' '), 1)
+    
+  - dimension: character_count
+    type: number
+    sql: character_length(${headline})
 
 #   - dimension: photo_data
 #     sql: ${TABLE}.photo_data
