@@ -3,8 +3,15 @@
   layout: tile
   tile_size: 100
 
-  elements:
+  filters:
 
+    - name: time
+      title: "Date Range"
+      type: date_filter
+      default_value: Last 3 months
+
+  elements:
+  
   - name: headlines
     title: Smashes
     type: single_value
@@ -43,6 +50,64 @@
     sorts: [headlines.count desc]
     show_null_labels: false
     height: 2
+
+  - name: usage
+    title: Daily Smashes 
+    type: looker_area
+    base_view: headlines
+    dimensions: [headlines.created_date]
+    measures: [headlines.count,]
+    sorts: [headlines.count desc]
+    hide_points: true
+    stacking: ''
+    x_axis_scale: auto
+    interpolation: linear
+    listen:
+      time: headlines.created_date
+    width: 12
+    
+  - name: usage_week
+    title: Weekly Smashes 
+    type: looker_area
+    base_view: headlines
+    dimensions: [headlines.created_week]
+    measures: [headlines.count]
+    sorts: [headlines.count desc]
+    hide_points: true
+    stacking: ''
+    x_axis_scale: auto
+    interpolation: linear
+    listen:
+      time: headlines.created_week
+    width: 12
+
+  - name: usage_votes
+    title: Daily Votes 
+    type: looker_area
+    base_view: votes
+    dimensions: [votes.created_date]
+    measures: [votes.count]
+    hide_points: true
+    stacking: ''
+    x_axis_scale: auto
+    interpolation: linear
+    listen:
+      time: headlines.created_date
+    width: 12
+    
+  - name: usage_week_votes
+    title: Weekly Votes 
+    type: looker_area
+    base_view: votes
+    dimensions: [votes.created_week]
+    measures: [votes.count]
+    hide_points: true
+    stacking: ''
+    x_axis_scale: auto
+    interpolation: linear
+    listen:
+      time: headlines.created_week
+    width: 12
 
   - name: votes_by_retention
     title: Votes by Sign in Count

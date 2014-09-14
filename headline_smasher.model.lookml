@@ -6,7 +6,7 @@
 - include: "*.view.lookml"       # include all the views
 - include: "*.dashboard.lookml"  # include all the dashboards
 
-- base_view: comments
+- explore: comments
   joins:
     - join: headlines
       foreign_key: headline_id
@@ -14,12 +14,12 @@
     - join: users
       foreign_key: user_id
 
-- base_view: headlines
+- explore: headlines
   joins:
     - join: users
       foreign_key: creator_id
 
-- base_view: source_headline_fragments
+- explore: source_headline_fragments
   joins:
     - join: source_headlines
       foreign_key: source_headline_id
@@ -27,11 +27,16 @@
     - join: headlines
       foreign_key: headline_id
 
-- base_view: source_headlines
+- explore: source_headlines
 
-- base_view: users
+- explore: source_words
+  joins:
+    - join: source_headlines
+      foreign_key: source_headline_id
 
-- base_view: votes
+- explore: users
+
+- explore: votes
   joins:
     - join: headlines
       foreign_key: headline_id

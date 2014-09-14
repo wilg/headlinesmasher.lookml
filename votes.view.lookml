@@ -36,6 +36,11 @@
   - measure: count
     type: count
     detail: detail*
+    
+  - measure: votes_per_headline
+    type: number
+    sql: ${votes.count}::float / NULLIF(${headlines.count}::float, 1)
+    decimals: 2
 
 
   # ----- Detail ------
