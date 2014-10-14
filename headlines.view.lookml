@@ -70,26 +70,25 @@
 
   - measure: count
     type: count
-    detail: detail*
+    drill_fields: detail*
     
   - measure: average_vote_count
     type: average
-    detail: detail*
+    drill_fields: detail*
     sql: ${TABLE}.vote_count
 
   - measure: total_vote_count
     type: sum
-    detail: detail*
+    drill_fields: detail*
     sql: ${TABLE}.vote_count
 
 
   # ----- Detail ------
   sets:
-    detail:
+    drill_fields:
       - id
       - name
         # Counters for views that join 'headlines'
       - comments.count
       - source_headline_fragments.count
       - votes.count
-

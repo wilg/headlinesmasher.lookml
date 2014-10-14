@@ -35,7 +35,7 @@
 
   - measure: count
     type: count
-    detail: detail*
+    drill_fields: detail*
     
   - measure: votes_per_headline
     type: number
@@ -45,9 +45,8 @@
 
   # ----- Detail ------
   sets:
-    detail:
+    drill_fields:
       - id
       - headlines.id
       - headlines.name
       - users.id
-

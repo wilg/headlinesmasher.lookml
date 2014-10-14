@@ -40,16 +40,14 @@
 
   - measure: count
     type: count
-    detail: detail*
+    drill_fields: detail*
 
 
   # ----- Detail ------
   sets:
-    detail:
+    drill_fields:
       - id
       - source_headlines.name
       - source_headlines.id
       - headlines.id
       - headlines.name
-
-

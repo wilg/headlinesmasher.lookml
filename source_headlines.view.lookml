@@ -54,12 +54,12 @@
       
   - measure: count
     type: count
-    detail: detail*
+    drill_fields: detail*
 
 
   # ----- Detail ------
   sets:
-    detail:
+    drill_fields:
       - name
       - id
         # Counters for views that join 'source_headlines'

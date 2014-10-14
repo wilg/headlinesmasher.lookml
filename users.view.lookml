@@ -71,7 +71,7 @@
 
   - measure: count
     type: count
-    detail: detail*
+    drill_fields: detail*
 
   - measure: total_karma
     type: sum
@@ -84,9 +84,8 @@
 
   # ----- Detail ------
   sets:
-    detail:
+    drill_fields:
       - id
         # Counters for views that join 'users'
       - comments.count
       - votes.count
-

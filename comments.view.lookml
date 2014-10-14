@@ -31,14 +31,13 @@
 
   - measure: count
     type: count
-    detail: detail*
+    drill_fields: detail*
 
 
   # ----- Detail ------
   sets:
-    detail:
+    drill_fields:
       - id
       - headlines.id
       - headlines.name
       - users.id
-
