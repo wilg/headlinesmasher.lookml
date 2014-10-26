@@ -85,7 +85,7 @@
 
   # ----- Detail ------
   sets:
-    drill_fields:
+    detail:
       - id
       - name
         # Counters for views that join 'headlines'

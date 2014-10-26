@@ -84,7 +84,7 @@
 
   # ----- Detail ------
   sets:
-    drill_fields:
+    detail:
       - id
         # Counters for views that join 'users'
       - comments.count

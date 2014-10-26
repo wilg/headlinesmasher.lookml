@@ -45,7 +45,7 @@
 
   # ----- Detail ------
   sets:
-    drill_fields:
+    detail:
       - id
       - source_headlines.name
       - source_headlines.id

@@ -59,8 +59,9 @@
     
   # ----- Detail ------
   sets:
-    drill_fields:
+    detail:
+      - created_at
+      - source_id
       - name
-      - id
         # Counters for views that join 'source_headlines'
       - source_headline_fragments.count
