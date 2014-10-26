@@ -28,6 +28,9 @@
       foreign_key: headline_id
 
 - explore: source_headlines
+  joins:
+    - join: sources
+      foreign_key: source_id
 
 - explore: source_words
   joins:
@@ -35,6 +38,7 @@
       foreign_key: source_headline_id
 
 - explore: users
+- explore: sources
 
 - explore: votes
   joins:

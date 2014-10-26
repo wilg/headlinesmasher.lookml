@@ -56,7 +56,7 @@
     type: count
     drill_fields: detail*
 
-
+    
   # ----- Detail ------
   sets:
     drill_fields:
