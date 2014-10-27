@@ -1,7 +1,13 @@
 - dashboard: fetchers
   title: Fetchers
-  layout: tile
-  tile_size: 100
+  layout: grid
+  rows:
+    - height: 300
+      elements: [import_speed]
+    - height: 300
+      elements: [import_speed_2]
+    - height: 200
+      elements: [source_headlines]
 
   filters:
 
@@ -31,7 +37,7 @@
       width: 12
       height: 4
 
-    - name: import_speed
+    - name: import_speed_2
       title: Added Source Headlines
       type: looker_area
       base_view: source_headlines

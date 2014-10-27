@@ -1,7 +1,19 @@
 - dashboard: stats
   title: "Headline Smasher Overview"
-  layout: tile
-  tile_size: 100
+  layout: grid
+  rows:
+    - height: 200
+      elements: [headlines, source_headlines, tweeted, untweeted]
+    - height: 350
+      elements: [usage, usage_week]
+    - height: 350
+      elements: [usage_votes, usage_week_votes]
+    - height: 350
+      elements: [votes_by_retention, karma_by_retention]
+    - height: 350
+      elements: [most_smashed]
+    - height: 350
+      elements: [sources]
 
   filters:
 
