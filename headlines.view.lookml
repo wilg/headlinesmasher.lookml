@@ -64,9 +64,9 @@
     timeframes: [time, date, week, month]
     sql: ${TABLE}.updated_at
 
-#   - dimension: vote_count
-#     type: int
-#     sql: ${TABLE}.vote_count
+  - dimension: number_of_votes
+    type: int
+    sql: ${TABLE}.vote_count
 
   - measure: count
     type: count
@@ -75,12 +75,12 @@
   - measure: average_vote_count
     type: average
     drill_fields: detail*
-    sql: ${TABLE}.vote_count
+    sql: ${number_of_votes}
 
   - measure: total_vote_count
     type: sum
     drill_fields: detail*
-    sql: ${TABLE}.vote_count
+    sql: ${number_of_votes}
 
 
   # ----- Detail ------
