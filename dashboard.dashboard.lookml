@@ -27,21 +27,21 @@
   - name: headlines
     title: Smashes
     type: single_value
-    base_view: headlines
+    explore: headlines
     measures: [headlines.count]
     height: 2
 
   - name: source_headlines
     title: Source Headlines
     type: single_value
-    base_view: source_headlines
+    explore: source_headlines
     measures: [source_headlines.count]
     height: 2
     
   - name: tweeted
     title: Tweeted
     type: single_value
-    base_view: votes
+    explore: votes
     measures: [headlines.count]
     filters:
       headlines.bot_tweeted: 'Yes'
@@ -53,7 +53,7 @@
   - name: untweeted
     title: Untweeted
     type: single_value
-    base_view: votes
+    explore: votes
     measures: [headlines.count]
     filters:
       headlines.bot_tweeted: 'No'
@@ -66,7 +66,7 @@
   - name: usage
     title: Daily Smashes 
     type: looker_area
-    base_view: headlines
+    explore: headlines
     dimensions: [headlines.created_date]
     measures: [headlines.count,]
     sorts: [headlines.count desc]
@@ -81,7 +81,7 @@
   - name: usage_week
     title: Weekly Smashes 
     type: looker_area
-    base_view: headlines
+    explore: headlines
     dimensions: [headlines.created_week]
     measures: [headlines.count]
     sorts: [headlines.count desc]
@@ -96,7 +96,7 @@
   - name: usage_votes
     title: Daily Votes 
     type: looker_area
-    base_view: votes
+    explore: votes
     dimensions: [votes.created_date]
     measures: [votes.count]
     hide_points: true
@@ -110,7 +110,7 @@
   - name: usage_week_votes
     title: Weekly Votes 
     type: looker_area
-    base_view: votes
+    explore: votes
     dimensions: [votes.created_week]
     measures: [votes.count]
     hide_points: true
@@ -124,7 +124,7 @@
   - name: votes_by_retention
     title: Votes by Sign in Count
     type: looker_area
-    base_view: headlines
+    explore: headlines
     dimensions: [users.sign_in_count]
     measures: [headlines.total_vote_count]
     filters:
@@ -136,7 +136,7 @@
   - name: karma_by_retention
     title: Total Karma by Sign in Count
     type: looker_area
-    base_view: users
+    explore: users
     dimensions: [users.sign_in_count]
     measures: [users.total_karma]
     sorts: [users.sign_in_count]
@@ -147,7 +147,7 @@
 #   - name: avg_karma_by_retention
 #     title: Average Karma by Sign in Count
 #     type: looker_column
-#     base_view: users
+#     explore: users
 #     dimensions: [users.sign_in_count_tier]
 #     measures: [users.average_karma]
 #     sorts: [users.sign_in_count_tier]
@@ -158,7 +158,7 @@
   - name: most_smashed
     title: Top 50 Most Smashed Sources
     type: looker_column
-    base_view: source_headline_fragments
+    explore: source_headline_fragments
     dimensions: [source_headlines.source_id]
     measures: [headlines.count]
     sorts: [headlines.count desc]
@@ -170,7 +170,7 @@
   - name: sources
     title: Top 50 Sources
     type: looker_column
-    base_view: source_headlines
+    explore: source_headlines
     dimensions: [source_headlines.source_id]
     measures: [source_headlines.count]
     limit: 50

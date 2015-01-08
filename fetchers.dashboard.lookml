@@ -26,7 +26,7 @@
     - name: import_speed
       title: Added Source Headlines
       type: looker_area
-      base_view: source_headlines
+      explore: source_headlines
       dimensions: [source_headlines.created_hour]
       measures: [source_headlines.count]
       sorts: [source_headlines.count desc]
@@ -40,7 +40,7 @@
     - name: import_speed_2
       title: Added Source Headlines
       type: looker_area
-      base_view: source_headlines
+      explore: source_headlines
       dimensions: [source_headlines.created_date]
       measures: [source_headlines.count]
       sorts: [source_headlines.count desc]
@@ -54,9 +54,7 @@
     - name: source_headlines
       title: Source Headlines
       type: single_value
-      base_view: source_headlines
+      explore: source_headlines
       measures: [source_headlines.count]
       height: 2
-      listen:
-        date: source_headlines.created_date
       width: 4
