@@ -26,6 +26,9 @@
 
     - join: headlines
       foreign_key: headline_id
+      
+    - join: sources
+      foreign_key: source_headlines.source_id
 
 - explore: source_headlines
   joins:

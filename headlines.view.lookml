@@ -74,6 +74,7 @@
     
   - measure: average_vote_count
     type: average
+    decimals: 1
     drill_fields: detail*
     sql: ${number_of_votes}
 
