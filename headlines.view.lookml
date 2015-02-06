@@ -88,7 +88,9 @@
   sets:
     detail:
       - id
-      - name
+      - headline
+      - number_of_votes
+      - bot_tweeted
         # Counters for views that join 'headlines'
       - comments.count
       - source_headline_fragments.count
