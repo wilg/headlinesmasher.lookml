@@ -53,6 +53,14 @@
     type: number
     sql: character_length(${headline})
 
+  - dimension: number_of_retweets
+    type: number
+    sql: ${TABLE}.retweet_count
+    
+  - dimension: number_of_favorites
+    type: number
+    sql: ${TABLE}.favorite_count
+
 #   - dimension: photo_data
 #     sql: ${TABLE}.photo_data
 
@@ -83,6 +91,27 @@
     drill_fields: detail*
     sql: ${number_of_votes}
 
+  - measure: total_retweets
+    type: sum
+    drill_fields: detail*
+    sql: ${number_of_retweets}
+
+  - measure: total_favorites
+    type: sum
+    drill_fields: detail*
+    sql: ${number_of_favorites}
+
+  - measure: average_retweets
+    type: average
+    decimals: 1
+    drill_fields: detail*
+    sql: ${number_of_retweets}
+
+  - measure: average_favorites
+    type: average
+    decimals: 1
+    drill_fields: detail*
+    sql: ${number_of_favorites}
 
   # ----- Detail ------
   sets:
