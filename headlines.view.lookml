@@ -60,6 +60,10 @@
   - dimension: number_of_favorites
     type: number
     sql: ${TABLE}.favorite_count
+    
+  - dimension: number_of_twitter_engagements
+    type: number
+    sql: ${number_of_retweets} + ${number_of_favorites}
 
 #   - dimension: photo_data
 #     sql: ${TABLE}.photo_data
@@ -101,6 +105,11 @@
     drill_fields: detail*
     sql: ${number_of_favorites}
 
+  - measure: total_twitter_engagements
+    type: sum
+    drill_fields: detail*
+    sql: ${number_of_twitter_engagements}
+
   - measure: average_retweets
     type: average
     decimals: 1
@@ -112,6 +121,12 @@
     decimals: 1
     drill_fields: detail*
     sql: ${number_of_favorites}
+
+  - measure: average_twitter_engagements
+    type: average
+    decimals: 1
+    drill_fields: detail*
+    sql: ${number_of_twitter_engagements}
 
   # ----- Detail ------
   sets:
