@@ -61,9 +61,17 @@
     type: number
     sql: ${TABLE}.favorite_count
     
+  - dimension: number_of_mentions
+    type: number
+    sql: ${TABLE}.mention_count
+    
   - dimension: number_of_twitter_engagements
     type: number
-    sql: ${number_of_retweets} + ${number_of_favorites}
+    sql: ${number_of_retweets} + ${number_of_favorites} + ${number_of_mentions}
+    
+  - dimension: score
+    type: number
+    sql: COALESCE(${TABLE}.score, ${number_of_votes})
 
 #   - dimension: photo_data
 #     sql: ${TABLE}.photo_data
