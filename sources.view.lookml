@@ -19,14 +19,22 @@
     - dimension: id
       sql: ${TABLE}.source_id
       primary_key: true
-  
+      links:
+      - label: View Source
+        url: https://www.headlinesmasher.com/sources/{{ value }}
+        icon_url: https://d260rnacdi07m9.cloudfront.net/assets/favicon-eb8ca42b49f74ee792fca554f7b8b4c5.ico
+
     - dimension: json
       sql: ${TABLE}.json
       hidden: true
   
     - dimension: name
       sql: ${json}->>'name'
-  
+      links:
+      - label: View Source
+        url: https://www.headlinesmasher.com/sources/{{ sources.id._value }}
+        icon_url: https://d260rnacdi07m9.cloudfront.net/assets/favicon-eb8ca42b49f74ee792fca554f7b8b4c5.ico
+
     - dimension: category
       sql: ${json}->>'category'
   
@@ -40,7 +48,6 @@
 
     - dimension_group: fetched
       type: time
-      timeframes: [time, date, week, month]
       sql: ${TABLE}.last_updated_at
       
     - measure: count
@@ -59,4 +66,3 @@
     detail:
       - source_id
       - last_updated_at
-

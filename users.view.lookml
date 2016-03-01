@@ -5,6 +5,10 @@
     primary_key: true
     type: number
     sql: ${TABLE}.id
+    links:
+      - label: View User
+        url: https://www.headlinesmasher.com/users/{{ users.login._value }}
+        icon_url: https://d260rnacdi07m9.cloudfront.net/assets/favicon-eb8ca42b49f74ee792fca554f7b8b4c5.ico
 
   - dimension: sign_in_count_tier
     type: tier
@@ -21,12 +25,10 @@
 
   - dimension_group: created
     type: time
-    timeframes: [time, date, week, month]
     sql: ${TABLE}.created_at
 
   - dimension_group: current_sign_in
     type: time
-    timeframes: [time, date, week, month]
     sql: ${TABLE}.current_sign_in_at
 
   - dimension: current_sign_in_ip
@@ -38,7 +40,6 @@
 
   - dimension_group: last_sign_in
     type: time
-    timeframes: [time, date, week, month]
     sql: ${TABLE}.last_sign_in_at
 
   - dimension: last_sign_in_ip
@@ -46,6 +47,10 @@
 
   - dimension: login
     sql: ${TABLE}.login
+    links:
+      - label: View User
+        url: https://www.headlinesmasher.com/users/{{ value }}
+        icon_url: https://d260rnacdi07m9.cloudfront.net/assets/favicon-eb8ca42b49f74ee792fca554f7b8b4c5.ico
 
 #   - dimension_group: remember_created
 #     type: time
@@ -62,7 +67,6 @@
 
   - dimension_group: updated
     type: time
-    timeframes: [time, date, week, month]
     sql: ${TABLE}.updated_at
 
   - dimension: vote_count
@@ -85,7 +89,9 @@
   # ----- Detail ------
   sets:
     detail:
-      - id
+      - login
+      - karma
+      - last_sign_in
         # Counters for views that join 'users'
       - comments.count
       - votes.count

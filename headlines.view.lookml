@@ -5,7 +5,24 @@
     primary_key: true
     type: number
     sql: ${TABLE}.id
+    links:
+      - label: View Headline
+        url: https://www.headlinesmasher.com/{{ value }}
+        icon_url: https://d260rnacdi07m9.cloudfront.net/assets/favicon-eb8ca42b49f74ee792fca554f7b8b4c5.ico
  
+  - dimension: headline
+    sql: ${TABLE}.name
+    links:
+      - label: View Headline
+        url: https://www.headlinesmasher.com/{{ headlines.id._value }}
+        icon_url: https://d260rnacdi07m9.cloudfront.net/assets/favicon-eb8ca42b49f74ee792fca554f7b8b4c5.ico
+      - label: View Tweet
+        url: |
+          {% if headlines.bot_tweet_url._value %}
+            https://twitter.com/HeadlineSmasher/status/{{ headlines.bot_tweet_url._value }}
+          {% endif %}
+        icon_url: http://twitter.com/favicon.ico
+
   - dimension: creator_id
     hidden: true
     type: number
@@ -13,34 +30,30 @@
 
   - dimension: bot_tweet_url
     sql: ${TABLE}.bot_share_tweet_id
-    html: |
-      <a href="https://twitter.com/HeadlineSmasher/status/{{ value }}">View Tweet</a>
-      
+    hidden: false
+    links:
+      - label: View Tweet
+        url: |
+          {% if value %}
+            https://twitter.com/HeadlineSmasher/status/{{ value }}
+          {% endif %}
+        icon_url: http://twitter.com/favicon.ico
+
   - dimension: bot_tweeted
     type: yesno
     sql: ${TABLE}.bot_share_tweet_id is not null
 
-  - dimension: permalink_url
-    sql: ${TABLE}.id
-    html: |
-      <a href="http://headlinesmasher.com/headlines/{{ value }}">View on Headline Smasher</a>
-
   - dimension_group: bot_tweeted
     type: time
-    timeframes: [time, date, week, month]
     sql: ${TABLE}.bot_shared_at
 
   - dimension_group: created
     type: time
-    timeframes: [time, date, week, month]
     sql: ${TABLE}.created_at
 
   - dimension: depth
     type: number
     sql: ${TABLE}.depth
-
-  - dimension: headline
-    sql: ${TABLE}.name
 
   - dimension: name_hash
     sql: ${TABLE}.name_hash
@@ -81,7 +94,7 @@
 
   - dimension_group: updated
     type: time
-    timeframes: [time, date, week, month]
+    hidden: true
     sql: ${TABLE}.updated_at
 
   - dimension: number_of_votes
@@ -139,7 +152,6 @@
   # ----- Detail ------
   sets:
     detail:
-      - id
       - headline
       - number_of_votes
       - bot_tweeted
