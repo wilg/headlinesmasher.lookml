@@ -3,7 +3,7 @@
 
   - dimension: id
     primary_key: true
-    type: int
+    type: number
     sql: ${TABLE}.id
 
   - dimension: sign_in_count_tier
@@ -12,11 +12,11 @@
     sql: ${sign_in_count}
   
   - dimension: api_requests
-    type: int
+    type: number
     sql: ${TABLE}.api_requests
 
   - dimension: comments_count
-    type: int
+    type: number
     sql: ${TABLE}.comments_count
 
   - dimension_group: created
@@ -33,7 +33,7 @@
     sql: ${TABLE}.current_sign_in_ip
 
   - dimension: karma
-    type: int
+    type: number
     sql: ${TABLE}.karma
 
   - dimension_group: last_sign_in
@@ -53,11 +53,11 @@
 #     sql: ${TABLE}.remember_created_at
 
   - dimension: saved_headlines_count
-    type: int
+    type: number
     sql: ${TABLE}.saved_headlines_count
 
   - dimension: sign_in_count
-    type: int
+    type: number
     sql: ${TABLE}.sign_in_count
 
   - dimension_group: updated
@@ -66,7 +66,7 @@
     sql: ${TABLE}.updated_at
 
   - dimension: vote_count
-    type: int
+    type: number
     sql: ${TABLE}.vote_count
 
   - measure: count

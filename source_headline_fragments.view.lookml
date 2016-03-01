@@ -3,7 +3,7 @@
 
   - dimension: id
     primary_key: true
-    type: int
+    type: number
     sql: ${TABLE}.id
 
   - dimension_group: created
@@ -12,25 +12,25 @@
     sql: ${TABLE}.created_at
 
   - dimension: headline_id
-    type: int
+    type: number
     hidden: true
     sql: ${TABLE}.headline_id
 
   - dimension: index
-    type: int
+    type: number
     sql: ${TABLE}.index
 
   - dimension: source_headline_end
-    type: int
+    type: number
     sql: ${TABLE}.source_headline_end
 
   - dimension: source_headline_id
-    type: int
+    type: number
     hidden: true
     sql: ${TABLE}.source_headline_id
 
   - dimension: source_headline_start
-    type: int
+    type: number
     sql: ${TABLE}.source_headline_start
 
   - dimension_group: updated

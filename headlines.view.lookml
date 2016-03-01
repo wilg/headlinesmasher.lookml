@@ -3,12 +3,12 @@
 
   - dimension: id
     primary_key: true
-    type: int
+    type: number
     sql: ${TABLE}.id
  
   - dimension: creator_id
     hidden: true
-    type: int
+    type: number
     sql: ${TABLE}.creator_id
 
   - dimension: bot_tweet_url
@@ -36,7 +36,7 @@
     sql: ${TABLE}.created_at
 
   - dimension: depth
-    type: int
+    type: number
     sql: ${TABLE}.depth
 
   - dimension: headline
@@ -85,7 +85,7 @@
     sql: ${TABLE}.updated_at
 
   - dimension: number_of_votes
-    type: int
+    type: number
     sql: ${TABLE}.vote_count
 
   - measure: count
@@ -94,7 +94,7 @@
     
   - measure: average_vote_count
     type: average
-    decimals: 1
+    value_format_name: decimal_1
     drill_fields: detail*
     sql: ${number_of_votes}
 
@@ -120,19 +120,19 @@
 
   - measure: average_retweets
     type: average
-    decimals: 1
+    value_format_name: decimal_1
     drill_fields: detail*
     sql: ${number_of_retweets}
 
   - measure: average_favorites
     type: average
-    decimals: 1
+    value_format_name: decimal_1
     drill_fields: detail*
     sql: ${number_of_favorites}
 
   - measure: average_twitter_engagements
     type: average
-    decimals: 1
+    value_format_name: decimal_1
     drill_fields: detail*
     sql: ${number_of_twitter_engagements}
 

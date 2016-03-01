@@ -3,7 +3,7 @@
 
   - dimension: id
     primary_key: true
-    type: int
+    type: number
     sql: ${TABLE}.id
 
   - dimension_group: created

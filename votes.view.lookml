@@ -3,7 +3,7 @@
 
   - dimension: id
     primary_key: true
-    type: int
+    type: number
     sql: ${TABLE}.id
 
   - dimension_group: created
@@ -12,7 +12,7 @@
     sql: ${TABLE}.created_at
 
   - dimension: headline_id
-    type: int
+    type: number
     hidden: true
     sql: ${TABLE}.headline_id
 
@@ -25,12 +25,12 @@
     sql: ${TABLE}.updated_at
 
   - dimension: user_id
-    type: int
+    type: number
     hidden: true
     sql: ${TABLE}.user_id
 
   - dimension: value
-    type: int
+    type: number
     sql: ${TABLE}.value
 
   - measure: count
@@ -40,7 +40,7 @@
   - measure: votes_per_headline
     type: number
     sql: ${votes.count}::float / NULLIF(${headlines.count}::float, 1)
-    decimals: 2
+    value_format_name: decimal_2
 
 
   # ----- Detail ------

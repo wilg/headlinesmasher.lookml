@@ -3,7 +3,7 @@
 
   - dimension: id
     primary_key: true
-    type: int
+    type: number
     sql: ${TABLE}.id
 
   - dimension: body
@@ -15,7 +15,7 @@
     sql: ${TABLE}.created_at
 
   - dimension: headline_id
-    type: int
+    type: number
     hidden: true
     sql: ${TABLE}.headline_id
 
@@ -25,7 +25,7 @@
     sql: ${TABLE}.updated_at
 
   - dimension: user_id
-    type: int
+    type: number
     hidden: true
     sql: ${TABLE}.user_id
 
